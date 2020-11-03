@@ -247,7 +247,7 @@ defaults:
   # _workshops
   - scope:
       path: ""
-      type: publications
+      type: workshops
     values:
       layout: single
       author_profile: true
