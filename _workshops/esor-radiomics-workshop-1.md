@@ -5,6 +5,7 @@ permalink: /workshop/esor-radiomics-workshop-1
 excerpt: "ESOR Radiomics Workshop - This workshop will teach you how to develop radiomics models."
 date: 2020-08-01
 venue: "ESOR"
+location: "Lisbon, Portugal"
 ---
 
 This is a description of a teaching experience. You can use markdown like any other post.

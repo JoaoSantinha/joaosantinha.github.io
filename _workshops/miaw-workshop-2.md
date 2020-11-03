@@ -3,8 +3,8 @@ title: "Medical Imaging Analysis Workshop - MIAW"
 collection: workshops
 type: "Master students workshop="
 permalink: /workshops/miaw-workshop-2
-venue: "Champalimaud Foundation and Instituto Superior Técnico - University of Lisbon"
 date: 2014-01-01
+venue: "Champalimaud Foundation and Instituto Superior Técnico - University of Lisbon"
 location: "Lisbon, Portugal"
 ---
 
