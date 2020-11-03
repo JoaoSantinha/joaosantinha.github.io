@@ -1,7 +1,6 @@
 ---
 title: "ESOR Radiomics Workshop"
 collection: workshops
-permalink: /workshop/esor_radiomics_workshop
 excerpt: 'ESOR Radiomics Workshop.'
 date: 2020-08-01
 venue: 'ESOR'
