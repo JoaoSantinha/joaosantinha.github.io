@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Workshops"
+title: "Workshops 12"
 permalink: /workshops/
 author_profile: true
 ---
