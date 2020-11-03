@@ -1,7 +1,8 @@
 ---
 title: "ESOR Radiomics Workshop"
 collection: workshops
-excerpt: 'ESOR Radiomics Workshop.'
+permalink: /workshop/esor-radiomics-workshop
+excerpt: 'ESOR Radiomics Workshop - This workshop will teach you how to develop radiomics models.'
 date: 2020-08-01
 venue: 'ESOR'
 ---
