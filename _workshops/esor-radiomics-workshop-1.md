@@ -1,11 +1,22 @@
 ---
 title: "ESOR Radiomics Workshop"
 collection: workshops
-permalink: /workshop/esor-radiomics-workshop
-excerpt: 'ESOR Radiomics Workshop - This workshop will teach you how to develop radiomics models.'
+permalink: /workshop/esor-radiomics-workshop-1
+excerpt: "ESOR Radiomics Workshop - This workshop will teach you how to develop radiomics models."
 date: 2020-08-01
-venue: 'ESOR'
+venue: "ESOR"
 ---
+
+This is a description of a teaching experience. You can use markdown like any other post.
+
+Heading 1
+======
+
+Heading 2
+======
+
+Heading 3
+======
 
 # ESOR Radiomics Workshop
 
