@@ -1,6 +1,7 @@
 ---
 title: "ESOR Radiomics Workshop"
 collection: workshops
+type: "Master students workshop"
 permalink: /workshop/esor-radiomics-workshop-1
 excerpt: "ESOR Radiomics Workshop - This workshop will teach you how to develop radiomics models."
 date: 2020-08-01
