@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-12-17T15:26:24Z",
+  "id": "radiomics-workshop",
+  "duration": 4,
+  "title": "ESOR Radiomics Workshop",
+  "summary": "ESOR Radiomics Workshop - This workshop will teach you how to develop radiomics models.",
+  "source": "/Users/joaosantinha/CODE/joaosantinha.github.io/_portfolio/esor-radiomics-workshop-1_claat.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "workshop"
+  ],
+  "tags": [
+    "workshops"
+  ],
+  "url": "radiomics-workshop"
+}

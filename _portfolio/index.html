@@ -1,0 +1,243 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>ESOR Radiomics Workshop</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="radiomics-workshop"
+                  title="ESOR Radiomics Workshop"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="authors: Joao Santinha" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Overview of the workshop" duration="1">
+        <p>In this workshop will teach you how to develop radiomics models, where we will explore and learn about each block of the<br> radiomics workflow.</p>
+<p>In this workshop we will use the PROSTATEx dataset (Joint SPIE-AAPM-NCI challenge - 2017 SPIE Medical Imaging Symposium)<br>to learn how to perform all the different steps<br>constituting these blocks required for the development of radiomics a model.</p>
+<p>The blocks are defined as follows:</p>
+<ul>
+<li>Definition of the research question</li>
+<li>Segmentation of Region-of-Interest</li>
+<li>Image Pre-pocessing</li>
+<li>Radiomics Feature Extraction</li>
+<li>Deep Features Extraction</li>
+<li>Radiomics+Deep Features Model Development</li>
+<li>Development of automatic segmentation model (bonus)</li>
+</ul>
+<p>The definition of the goal/research question that we will try to solve with radiomics was already defined here by the<br>challenge organizers. In this case, the goal of this challenge was to predict clinical significance (biopsy Gleason<br>Score of 7 or higher)  of prostate findings. The goals can be on something with the potential to improve the<br>patient treatment and outcome, and business efficiency ( image quality, automation of repetitive tasks by radiologists, workflow<br>prioritization, etc.).</p>
+<p>Prerequisites:</p>
+<ul>
+<li>Google account (either personal or institutional)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Segmentation of Region-of-Interest" duration="1">
+        <p>Segmentation of the lesions/regions-of-interest are important as it allows us to put the focus of feature extracted on<br>the particular are were we expect relevant information to be, as well as to obtain morphological information about the<br>segmented structure. The segmentation can be done manually, semi-automatically or automatically (it is common that the<br>automatic segmentation will not be perfect and will require curation of radiologists - also caused by inter-observer<br>variability).</p>
+<p>Segmentation of regions-of-interest can be done using several tools:</p>
+<ul>
+<li><a href="https://www.slicer.org" target="_blank">3D Slicer</a></li>
+<li><a href="https://www.mitk.org/wiki/The_Medical_Imaging_Interaction_Toolkit_(MITK)" target="_blank">MITK</a></li>
+<li><a href="http://www.itksnap.org/pmwiki/pmwiki.php" target="_blank">ITK-SNAP</a></li>
+<li><a href="https://www.osirix-viewer.com" target="_blank">OsiriX</a></li>
+<li><a href="https://horosproject.org" target="_blank">Horos</a></li>
+<li><a href="http://htmlsegmentation.s3.eu-north-1.amazonaws.com/index.html" target="_blank">MedSeg</a></li>
+</ul>
+<p>In this workshop we will use<br><a href="http://htmlsegmentation.s3.eu-north-1.amazonaws.com/index.html" target="_blank">MedSeg</a>, which is a<br>web-based solution that does not require you to install any application and works in your browser.</p>
+<p>Although prostate MRI is multi-parametric, for simplicity we will use only T2-weighted images. We will perform the<br>segmentation of the index lesion in this following examination that you should download to your computer.</p>
+<p>To perform the segmentation lets follow these steps:</p>
+<ol type="1">
+<li><a href="https://www.dropbox.com/s/t21vfflozy5cpym/T2w_prostate_example.nii.gz?dl=1" target="_blank">Download<br>T2-weighted Prostate Image</a></li>
+<li><a href="http://htmlsegmentation.s3.eu-north-1.amazonaws.com/index.html" target="_blank">Open MedSeg on your<br>browser</a></li>
+<li>Drag the file you just downloaded (T2w_prostate_example.nii.gz) file to the MedSeg tab</li>
+<li>Segment the index lesion and save the resulting segmentation file</li>
+</ol>
+<p>The image and segmentation mask files can either be used to extract radiomics features, as we will see later, or to<br>train deep learning models to perform the segmentation automatically.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Image Pre-processing" duration="1">
+        <p>A very important part of the whole radiomics model development is the pre-processing of the images to be analyzed.<br>Several artifacts (motion, noise, intensities inhomogeneities caused by MRI radio<br>frequency field inhomogeneities) may affect images.<br><img alt="image info" src="img/31b909c004ba9673.png"></p>
+<p>We will teach you a way to denoise and correct bias field inhomogeneities.</p>
+<p>Lets open the following colab notebook and create your own copy of the notebook that you can run.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Radiomics Feature Extraction" duration="1">
+        <p>Radiomic features are mathematical descriptors of image intensities and texture initially defined for computer vision<br>tasks. In the radiological context, the features are not extracted from the whole image but from the region-of-interest,<br> which could be an organ, part of an organ or a lesion. For this reason, to extract radiomic features we are required to<br> provide pairs of images-masks.</p>
+<p>Several types of radiomic features can be extracted from the images.</p>
+<p>These comprise:</p>
+<ul>
+<li>Shape features</li>
+<li>First-order (histogram) features of the original image</li>
+<li>Second-order (texture) features of the original image</li>
+<li>Higher-order features - first- and second-order features of filtered images</li>
+</ul>
+<h3 is-upgraded>Shape features</h3>
+<p class="image-container"><img alt="image info" src="img/cb03c403d21f66c2.png"></p>
+<p>Shape features can capture different VOI shape-related metrics:</p>
+<ul>
+<li>Volume</li>
+<li>Surface Area</li>
+<li>Surface Area to Volume ratio</li>
+<li>Compactness</li>
+<li>Spherical Disproportion</li>
+<li>Elongatiom</li>
+<li>Maximum 3D/2D-slice/2D-AP/2D-RL</li>
+<li>Flatness</li>
+<li>etc.</li>
+</ul>
+<p>These features are only calculated for the original image</p>
+<h3 is-upgraded>First-order features</h3>
+<p class="image-container"><img alt="image info" src="img/8caee14e084aeb57.png"></p>
+<p>First-order features can capture different histogram-related metrics:</p>
+<ul>
+<li>Energy</li>
+<li>Entropy</li>
+<li>Minimum/Maximum</li>
+<li>10th/90th-Percentile</li>
+<li>Interquartile Range</li>
+<li>Skewness/Kurtosis</li>
+<li>Standard deviation/Variance</li>
+<li>Mean/Median</li>
+<li>etc.</li>
+</ul>
+<p>These features can be calculated from the original and filtered images.</p>
+<h2 is-upgraded>Texture features</h2>
+<h3 is-upgraded>Gray Level Co-occurrence Matrix (GLCM) features</h3>
+<p><img alt="image info" src="img/8602e05cb00892ea.jpg"><em>Example of GLCM matrix and feature computation from gray levels</em></p>
+<p>From this class the following radiomic features:</p>
+<ul>
+<li>Autocorrelation</li>
+<li>Joint Average</li>
+<li>Cluster Prominence / Shade / Tendency</li>
+<li>Contrast</li>
+<li>Correlation</li>
+<li>Difference Average / Entropy / Variance</li>
+<li>Joint Energy / Entropy</li>
+<li>Informational Measure of Correlation</li>
+<li>Inverse Difference Moment / Difference Moment Normalized / Difference (Homogeneity) / Difference Normalized / Variance</li>
+<li>Maximal Correlation Coefficient (MCC)</li>
+<li>Maximum Probability</li>
+<li>Sum Average/Entropy/ of Squares</li>
+</ul>
+<h3 is-upgraded>Gray Level Size Zone Matrix (GLSZM) features</h3>
+<p><img alt="image info" src="img/3ce430b7f6487dab.png"><em>Example of GLSZM matrix computation from gray levels</em></p>
+<p>From this class the following radiomic features:</p>
+<ul>
+<li>Small / Large Area Emphasis</li>
+<li>Gray Level Non-Uniformity (Normalized)</li>
+<li>Size-Zone Non-Uniformity (Normalized)</li>
+<li>Zone Percentage</li>
+<li>Gray Level Variance</li>
+<li>Zone Variance / Entropy</li>
+<li>Low / High Gray Level Zone Emphasis</li>
+<li>Small Area Low / High Gray Level Emphasis</li>
+<li>Large Area Low / High Gray Level Emphasis</li>
+</ul>
+<h3 is-upgraded>Gray Level Run Length Matrix (GLRLM) features</h3>
+<p><img alt="image info" src="img/66aa0cfaa8b4f849.jpg"><em>Example of GLRLM matrix computation from gray levels</em></p>
+<p>From this class the following radiomic features:</p>
+<ul>
+<li>Short / Long Run Emphasis</li>
+<li>Gray Level Non-Uniformity (Normalized)</li>
+<li>Run Length Non-Uniformity (Normalized)</li>
+<li>Run Percentage</li>
+<li>Gray Level Variance</li>
+<li>Run Variance / Entropy</li>
+<li>Low / High Gray Level Run Emphasis</li>
+<li>Short Run Low / High Gray Level Emphasis</li>
+<li>Long Run Low / High Gray Level Emphasis</li>
+</ul>
+<h3 is-upgraded>Neighbouring Gray Tone Difference Matrix (NGTDM) features</h3>
+<p><img alt="image info" src="img/713c940b32216568.png"><em>Example of NGTDM matrix computation from gray levels</em></p>
+<p>From this class the following radiomic features:</p>
+<ul>
+<li>Coarseness</li>
+<li>Contrast</li>
+<li>Busyness</li>
+<li>Complexity</li>
+<li>Strength</li>
+</ul>
+<h3 is-upgraded>Gray Level Dependence Matrix (GLDM) features</h3>
+<p><img alt="image info" src="img/b9a3b57914c81f68.png"><em>Example of GLDM matrix computation from gray levels</em></p>
+<p>From this class the following radiomic features:</p>
+<ul>
+<li>Small / Large Dependence Emphasis</li>
+<li>Gray Level Non-Uniformity</li>
+<li>Dependence Non-Uniformity (Normalized)</li>
+<li>Gray Level Variance</li>
+<li>Dependence Variance / Entropy</li>
+<li>Low / High Gray Level Emphasis</li>
+<li>Small Dependence Low / High Gray Level Emphasis</li>
+<li>Large Dependence Low / High Gray Level Emphasis</li>
+</ul>
+<p>Other feature classes may also be available through other libraries.</p>
+<p>First-order and Texture features may also be extracted from filtered images.</p>
+<p>The main idea behind the application of filter for the extraction of radiomic features is to emphasize specific transitions/textures/contours/etc.</p>
+<p>Examples of filters that can be applied to the original images for feature extraction are:</p>
+<ul>
+<li>Laplacian of Gaussian (LoG)</li>
+<li>Wavelets</li>
+<li>Exponential</li>
+<li>Logarithm</li>
+<li>Square</li>
+<li>Square-Root</li>
+</ul>
+<p>In this colab notebook link we illustrate the results of applying each of the filters to the original image.<br></p>
+<p>Depending on the image modality and image acquisition characteristics, several options on the feature extraction may<br>vary.</p>
+<p>If the voxel intensities have units (e.g., CT - HU; PET - SUV; MRI-ADC - mm2/s, etc.) we can expect some<br>degree of standardization of the intensities across patients.<br>On the other if considering, for example T2w images, the voxel intensities have arbitrary units and normalization may be<br>needed to standardize the intensities across patients.</p>
+<p>Two different approaches for the intensity discretization can be used:</p>
+<ul>
+<li>bin width - each intensity bin will have this predefined width</li>
+<li>bin count - image intensities are stretched or squeezed so that the intensities within the mask will be divided into<br>this predefined number of bins</li>
+</ul>
+<p>The resolution of the images will also impact the radiomic feature extraction. If utilizing a dataset that it is<br>heterogeneous in terms of voxel spacing, this should also be standardized through resampling so that the meaninng of the<br>extracted radiomic features can be compared and differences don&#39;t reflect solely differences in resolution. Another<br>important part of the feature extraction is whether we have isotropic or anisotropic images. Features can be extracted<br>both in 2D or 3D, where the later requires the use isotropic images. The transformation of anisotropic images to<br>isotropic is possible through resampling but the it requires the downsample of the in-plane resolution (with loss of<br>information) or the upsampling of the through-plane resolution (with non-acquired information being considered), or even<br>a mix both.</p>
+<p>We will make use of PyRadiomics to extract the radiomic features.</p>
+<p>So lets open the following colab notebook, create your copy and start running it.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Radiomics Features Model Development" duration="0">
+        <p>After having extracted the radiomic features for our dataset and having obtained the outcomes for the collected patients<br>we will develop our model and assess its performance.</p>
+<p>The model development and assessment is frequently a part where a lot of mistakes are done that jeopardize the<br>performance of the models and that may lead to an apparent correct functioning of our model with possible catastrofic<br>results upon model deployment and prediction on new cases.</p>
+<p>In the next notebook we will partition our dataset into training and held-out test datasets, using the training dataset<br>see how to compare several classifiers, how to train/fine-tune the selected classifier that will constitute our model,<br>and, finally, perform its assessment of the developed model with the held-out test dataset.</p>
+<p>Lets start! Open the following colab notebook, create your copy and start running it.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

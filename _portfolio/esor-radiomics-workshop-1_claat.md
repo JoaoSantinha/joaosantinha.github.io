@@ -1,16 +1,14 @@
 ---
-title: "ESOR Radiomics Workshop"
+summary: ESOR Radiomics Workshop - This workshop will teach you how to develop radiomics models.
 id: radiomics-workshop
-collection: workshops
-type: "Master students workshop"
-permalink: /workshop/esor-radiomics-workshop-1
-excerpt: "ESOR Radiomics Workshop - This workshop will teach you how to develop radiomics models."
-date: 2020-08-01
-venue: "ESOR"
-location: "Lisbon, Portugal"
+categories: Workshop
+tags: workshops
+status: Published 
+authors: Joao Santinha
 ---
 
 # ESOR Radiomics Workshop
+<!-- ------------------------ -->
 
 ## Overview of the workshop
 Duration: 0:05
@@ -40,6 +38,8 @@ prioritization, etc.).
 Prerequisites:
 
 * Google account (either personal or institutional)
+
+<!-- ------------------------ -->
 
 ## Segmentation of Region-of-Interest
 Duration: 0:10
@@ -80,6 +80,8 @@ browser</a>
 The image and segmentation mask files can either be used to extract radiomics features, as we will see later, or to 
 train deep learning models to perform the segmentation automatically.
 
+<!-- ------------------------ -->
+
 ## Image Pre-processing
 Duration: 0:10
 
@@ -97,6 +99,8 @@ Lets open the following colab notebook and create your own copy of the notebook 
 
 [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1X5ygFINhEyL5GZiVFRUH6CI0FNCUWSHO?usp=sharing)
 
+<!-- ------------------------ -->
+
 ## Radiomics Feature Extraction
 Duration: 0:10
 
@@ -112,6 +116,8 @@ These comprise:
 * First-order (histogram) features of the original image
 * Second-order (texture) features of the original image
 * Higher-order features - first- and second-order features of filtered images
+
+<!-- ------------------------ -->
 
 #### Shape features
 
@@ -337,6 +343,9 @@ Duration: 0:10
 
 After constructing a dataset which you will use to train/evaluate your model
 -->
+
+<!-- ------------------------ -->
+
 
 ## Radiomics Features Model Development
 Duration: TBD
