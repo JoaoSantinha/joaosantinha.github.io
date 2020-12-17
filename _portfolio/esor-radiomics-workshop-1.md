@@ -86,10 +86,9 @@ Duration: 0:10
 A very important part of the whole radiomics model development is the pre-processing of the images to be analyzed. 
 Several artifacts (motion, noise, intensities inhomogeneities caused by MRI radio
 frequency field inhomogeneities) may affect images.
-<!---
+
 ![image info](../images/Artifacts_Prostate_MRI.png)
--->
-![image info](./images/Artifacts_Prostate_MRI.png)
+
 
 We will teach you a way to denoise and correct bias field inhomogeneities.
 
@@ -115,10 +114,7 @@ These comprise:
 
 #### Shape features
 
-<!---
 ![image info](../images/shape_fig.png)
--->
-![image info](./images/shape_fig.png)
 
 Shape features can capture different VOI shape-related metrics:
 * Volume
@@ -135,11 +131,7 @@ These features are only calculated for the original image
 
 #### First-order features
 
-<!---
 ![image info](../images/histogram_metrics.png)
--->
-![image info](./images/histogram_metrics.png)
-
 
 First-order features can capture different histogram-related metrics:
 * Energy
@@ -159,10 +151,7 @@ These features can be calculated from the original and filtered images.
 
 #### Gray Level Co-occurrence Matrix (GLCM) features
 
-<!---
 ![image info](../images/An-illustration-of-how-the-Haralick-texture-features-are-computed-In-a-4-4-image_W640.jpg)
--->
-![image info](./images/An-illustration-of-how-the-Haralick-texture-features-are-computed-In-a-4-4-image_W640.jpg)
 *Example of GLCM matrix and feature computation from gray levels*
 
 From this class the following radiomic features:
@@ -181,10 +170,7 @@ From this class the following radiomic features:
 
 #### Gray Level Size Zone Matrix (GLSZM) features
 
-<!---
 ![image info](../images/szm.png)
--->
-![image info](./images/szm.png)
 *Example of GLSZM matrix computation from gray levels*
 
 From this class the following radiomic features:
@@ -200,10 +186,7 @@ From this class the following radiomic features:
 
 #### Gray Level Run Length Matrix (GLRLM) features
 
-<!---
 ![image info](../images/glrlm.jpg)
--->
-![image info](./images/glrlm.jpg)
 *Example of GLRLM matrix computation from gray levels*
 
 From this class the following radiomic features:
@@ -237,10 +220,7 @@ From this class the following radiomic features:
 
 #### Neighbouring Gray Tone Difference Matrix (NGTDM) features
 
-<!---
 ![image info](../images/figNGTDM1.png)
--->
-![image info](./images/figNGTDM1.png)
 *Example of NGTDM matrix computation from gray levels*
 
 From this class the following radiomic features:
@@ -252,10 +232,7 @@ From this class the following radiomic features:
 
 #### Gray Level Dependence Matrix (GLDM) features
 
-<!---
 ![image info](../images/figNGLDM1.png)
--->
-![image info](./images/figNGLDM1.png)
 *Example of GLDM matrix computation from gray levels*
 
 From this class the following radiomic features:
